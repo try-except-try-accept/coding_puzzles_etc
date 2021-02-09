@@ -1,10 +1,10 @@
 from random import randint
 
-HEIGHT = 5#randint(3, 10)
+HEIGHT = randint(3, 10)
 
 def random_triangle():
+     '''Create a random triangle of digits'''
      triangle = ''
-
      
      buffer = (HEIGHT+1//2)     
      for i in range(HEIGHT):       
@@ -22,15 +22,14 @@ test_data = random_triangle()
 print("Testing ... ")
 print(test_data)
 
+# convert into data we can actually use
 triangle = [row.strip().split() for row in test_data.strip().split("\n")]
-
 depth = HEIGHT - 1
 
+# find all possible binary (left? or right?) pathways
 possible_paths = [bin(num)[2:].zfill(depth) for num in range(0, 2**depth)]
 
-
 traversals = [[]]
-
 
 attempts = 0
 best = [0]
